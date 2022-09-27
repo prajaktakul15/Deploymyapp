@@ -1,0 +1,72 @@
+<div class="container">
+   <form (ngSubmit)="onSubmit()" [formGroup]="regform">
+       <div class="row">
+           <h2>Register Here</h2>
+       </div>
+       <div class="mb-3">
+           <label for="name">Name</label>
+           <input type="text" id="name" formControlName="name" class="form-control">
+           <div *ngIf="name.dirty && name.invalid" class="alert alert-danger">
+               <span [hidden]="!name.errors?.['required']">
+                   Pleaes Enter a Name...
+               </span>
+           </div>
+       </div>
+       <div class="mb-3">
+           <label for="age">Age</label>
+           <input type="text" id="age" formControlName="age" class="form-control">
+           <div *ngIf="age.dirty && age.invalid" class="alert alert-danger">
+               <span [hidden]="!age.errors?.['required']">
+                   Pleaes Enter a Age...
+               </span> 
+               <span [hidden]="!age.errors?.['ageRange']">
+                   Age must be between {{age.errors?.['min']}} to {{age.errors?.['max']}}
+               </span> 
+           </div>
+       </div>
+       <div class="mb-3">
+           <label for="username">Usename</label>
+           <input type="text" id="username" formControlName="username" class="form-control">
+           <div *ngIf="username.dirty && username.invalid" class="alert alert-danger">
+               <span [hidden]="!username.errors?.['required']">
+                   Pleaes Enter a Username...
+               </span> 
+               <span [hidden]="!username.errors?.['pattern']">
+                   Pleaes Enter a Valid Username ...
+               </span>
+           </div>
+       </div>   
+       <div class="mb-3">
+           <label for="password">Password</label>
+           <input type="password" id="password" formControlName="password" class="form-control">
+           <div *ngIf="password.dirty && password.invalid" class="alert alert-danger">
+               <span [hidden]="!password.errors?.['required']">
+                   Pleaes Enter a Password...
+               </span>
+           </div> 
+       </div>   
+       <div class="mb-3">
+           <label for="cpassword">Confirm Password</label>
+           <input type="password" id="cpassword" formControlName="cpassword" class="form-control">
+           <div *ngIf="cpassword.dirty && cpassword.invalid" class="alert alert-danger">
+               <span [hidden]="!cpassword.errors?.['required']">
+                   Pleaes Confirm Your Password...
+               </span>
+
+               <span [hidden]="!cpassword.errors?.['match']">
+                Password and confirm password does not matched
+            </span>
+           </div> 
+       </div>
+       <div formArrayName="mobile">
+           <div class="mb-3" *ngFor="let m of mobile.controls;let i=index">
+               <label for="mobile">Mobile {{i+1}} </label>
+               <input type="number" class="form-control"
+               [formControlName]="i">
+           </div>
+           <button class="btn btn-outline-primary m-2" (click)="addMobile()" [disabled]="mobile.length==3">+</button>
+           <button class="btn btn-outline-primary m-2 " (click)="removeMobile()" [disabled]="mobile.length==1">-</button>
+       </div>  
+       <input type="submit" value="Login" class="btn btn-outline-success m-2" [disabled]="regform.invalid">
+   </form>
+</div>

@@ -1,0 +1,20 @@
+<div class ="container mt-4">
+      <div class ="row">
+          <div class="col-md-6">
+            <img [src]="product.product_ImageURL" class="Img-fluid">
+           </div>
+       <div class="col-md-6">
+       <h2 class ="text-center">{{product.product_Name}}</h2>
+       <h4>{{product.product_Type|titlecase}}</h4>
+       <h4>{{product.product_MDate|date:'longDate'}}</h4>
+       <h4>{{product.product_Price|currency:"INR"}}</h4>
+       <h4>
+           {{product.product_Discount}}% Discounted Price
+           {{product.product_Price|discount:product.
+            product_Discount|currency:"INR"}}
+        </h4>
+        <app-star [rating]="product.product_Rating">
+      </app-star>
+    </div>
+</div>
+</div>

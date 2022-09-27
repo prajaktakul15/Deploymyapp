@@ -1,0 +1,81 @@
+<div class="container mt-2">
+    <div class="row mt-1">
+        <!--1st way to achive two way binding-->
+        <input type="search" class="form-control" [value]="searchname" (input)="search($event)"> 
+    {{searchname}}
+    </div>
+    <!--second way to achive 2 way binding-->
+    <div class="row my-1">
+        <input type="search" class="form-control"
+        [(ngModel)]="searchname2">
+        {{searchname2}}
+        
+    </div>
+    <div class="row">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary active" (click)="filterbytype()">All</button>
+
+            <button type="button" class="btn btn-primary" (click)="filterbytype('Mobile')">Mobile</button>
+
+            <button type="button" class="btn btn-primary" (click)="filterbytype('Tv')">Tv</button>
+
+            <button type="button" class="btn btn-primary" (click)="filterbytype('AC')">AC</button>
+
+            <button type="button" class="btn btn-primary" (click)="filterbytype('Fridge')"> Fridge</button>
+
+          </div>
+    </div>
+    <div class="row">
+        <h1>{{menutitle}}</h1>
+         <!--Slicing-->
+       <!--{{productlist|slice:1:4|json}}-->
+       <!--Fetching the product from 1st index to third index-->
+   </div>
+   <div class="row">
+    <div *ngIf="productlist.length==0" class ="alert alert-warning ">
+       No Result Found...
+    </div>
+    <div class="col-sm-6 col--md-4 col-lg-3 my-2" *ngFor="let product of productlist">
+        <div class="card">
+            <img class="product-img"
+            [src]="product.product_ImageURL"  alt="...">
+            <div class="card-body">
+              <h5 class="card-title" [ngClass]="cssClass" [ngStyle]="cssProperties">
+                {{product.product_Name|uppercase}}
+               </h5>
+              <p class="card-text">{{product.product_Price|currency:"INR"}}</p>
+              <p>
+                {{product.product_Discount}}% Discounted Price {{product.product_Price|discount:40}}
+              </p>
+              <p appHighlight="orange" fontsize="30px" class="card-text">{{product.product_Type|lowercase}}</p>  
+              <p class="card-text">
+                {{product.product_MDate|date:"d-MMMM-y"}}
+            </p>    
+            <p class="card-text">
+            
+            <app-star [rating]="product.product_Rating"
+              (printRating)="show($event)"
+              >
+            </app-star></p>
+            <p>
+           <a [routerLink]="['/product','detail',product.product_Id]"
+           class="btn btn-outline-primary">
+              <i class = "bi bi-eye-fill"></i>
+          </a>
+           <button class="btn btn-outline-danger">
+            <i class="bi bi-trash-fill"></i>
+
+           </button>
+
+           
+            <a [routerLink]="['/product','Update', product.
+              product_Id]"
+             class ="btn btn-outline-primary">
+             <i class="bi bi-pencil-fill"></i>
+            </a>
+          </p>       
+            </div>
+          </div>
+    </div>
+</div>
+</div>

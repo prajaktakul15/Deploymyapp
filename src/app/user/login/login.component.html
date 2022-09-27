@@ -1,0 +1,48 @@
+<!--
+<div class="container">
+     <form (ngSubmit)="onSubmit()">
+    
+      <input type="submit" value="Login" class="btn-outline-success" [disabled]="username.invalid">
+
+</form>
+</div>
+-->
+
+<div class="container">
+     <form (ngSubmit)="onSubmit()"[formGroup]="loginform">
+         <div class="row">
+            <h2>Login Here</h2>
+         </div>
+        <div class="mb-3">
+            <label for="username">Username</label>
+            <input type="text" id="username"
+            formControlName= "username" class = "form-Control">
+            <div *ngIf="username.dirty && username.invalid"
+            class=" alert alert-danger">
+               <span [hidden]="!username.errors?.['required']">
+                Please Enter a Usernames
+               </span>
+
+               <span [hidden]="!username.errors?.['pattern']">
+                Please Enter a valid Usernames
+               </span>
+        </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="password">Password</label>
+            <input type="password" id="Password"
+            formControlName= "Password" class ="form-Control">
+            <div *ngIf="password.dirty && password.invalid"
+            class=" alert alert-danger">
+               <span [hidden]="!password.errors?.['required']">
+                Please Enter Password
+               </span>
+        </div>
+        </div>
+        <input type="submit" value="Login" class="btn-outline-success" [disabled]="loginform.invalid">
+
+        
+     </form>
+     </div>

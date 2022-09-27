@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="row">
+      <h2>Product Form</h2>
+  </div>
+  <div class="row">
+  <form (ngSubmit)=" onSubmit()" #pform="ngForm">
+      <!--valid:- {{pform.valid}}<br>
+      Invalid:- {{pform.invalid}}-->
+
+    <div class="nb-3">
+          <label for="id">Product Id</label>
+          <input type ="text" name="product_Id" id="id"
+           class="form-control" [(ngModel)]="product.product_Id" required pattern="^[0-9]+$" #product_Id="ngModel">
+        <div class="alert alert-danger" *ngIf="product_Id.dirty && product_Id.invalid" >
+
+            <span *ngIf="product_Id.errors?.['required']">Pls Enter Product Id</span>
+            <span *ngIf="product_Id.errors?.['pattern']">Product Id must be Numeric</span>
+        </div>
+          <div class="mb-3">
+            <label for="name">Product Name</label>
+            <input type="text" name="product_name" id="id"
+            class="form-control" [(ngModel)]="product.
+            product_Name" required pattern="^[A-Za-z0-9_.$@]+$"
+             #product_Name="ngModel" />
+             <div class ="alert alert-danger" *ngIf="product_Name.
+             dirty && product_Name.invalid">
+              
+             <span *ngIf="product_Name.errors?.['required']">Pls Enter Product Id</span>
+             <span *ngIf="product_Name.errors?.['pattern']">Product Name  must be valid</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="name">Product Price</label>
+            <input type="text" name="product_Price" id="Price"
+            class="form-control" [(ngModel)]="product.
+            product_Price" required pattern="[0-9]+$"
+             #product_Price="ngModel" />
+             <div class ="alert alert-danger" *ngIf="product_Price.
+             dirty && product_Price.invalid">
+              
+             <span *ngIf="product_Price.errors?.['required']">Pls Enter Product Id</span>
+             <span *ngIf="product_Price.errors?.['pattern']">Product Price  must be valid</span>
+            </div>
+          </div>
+
+
+          <div class="mb-3">
+            <label for="name">Product ImageUrl</label>
+            <input type="text" name="product_ImageURL" id="Price"
+            class="form-control" [(ngModel)]="product.product_ImageURL
+            " required pattern=""
+             #product_ImageURL="ngModel" />
+             <div class ="alert alert-danger" *ngIf="product_ImageURL.
+             dirty && product_ImageURL.invalid">
+              
+             <span *ngIf="product_ImageURL.errors?.['required']">Pls Enter Product ImageURL</span>
+             <span *ngIf="product_ImageURL.errors?.['pattern']">Product ImageURL  must be valid</span>
+            </div>
+          </div>
+
+
+
+          <div class="mb-3">
+            <label for="name">Product type</label>
+            <input type="text" name="product_Type" id="product_Type"
+            class="form-control" [(ngModel)]="product.product_Type
+            " required #product_Type="ngModel" />
+             <div class ="alert alert-danger" *ngIf="product_Type.
+             dirty && product_Type.invalid">
+              
+             <span *ngIf="product_ImageURL.errors?.['required']">Pls Enter Product type</span>
+             <span *ngIf="product_ImageURL.errors?.['pattern']">Product type  must be valid</span>
+            </div>
+          </div>
+
+
+
+
+          <div class="mb-3">
+            <label for="name">Product Date</label>
+            <input type="text" name="product_MDate" id="product_MDate"
+            class="form-control" [(ngModel)]="product.product_Type
+            " required #product_MDate="ngModel" />
+             <div class ="alert alert-danger" *ngIf="product_MDate.
+             dirty && product_MDate.invalid">
+              
+             <span *ngIf="product_MDate.errors?.['required']">Pls Enter Product Date</span>
+             <span *ngIf="product_MDate.errors?.['pattern']">Product Date  must be valid</span>
+            </div>
+          </div>
+
+
+          <div class="mb-3">
+            <label for="name">Product Discount</label>
+            <input type="text" name="product_Discount" id="Discount"
+            class="form-control" [(ngModel)]="product.product_Discount
+            " required pattern #product_Discount="ngModel" />
+             <div class ="alert alert-danger" *ngIf="product_Discount.
+             dirty && product_Discount.invalid">
+              
+             <span *ngIf="product_Discount.errors?.['required']">Pls Enter Product type</span>
+             <span *ngIf="product_Discount.errors?.['pattern']">Product type  must be valid</span>
+            </div>
+          </div>
+
+
+
+          <div class="mb-3">
+            <label for="name">Product Rating</label>
+            <input type="text" name="product_Rating" id="type"
+            class="form-control" [(ngModel)]="product.product_Rating
+            " required pattern="[0-9]+$"
+             #product_Rating="ngModel" />
+             <div class ="alert alert-danger" *ngIf = "product_Rating.
+             dirty && product_Rating.invalid">
+              
+             <span *ngIf="product_Rating.errors?.['required']">Pls Enter Product Rating</span>
+             <span *ngIf="product_Rating.errors?.['pattern']">Product Rating  must be valid</span>
+            </div>
+          </div>
+
+
+
+        </div>
+        
+    <button type="submit" class="btn btn-outline-success" [disabled]="pform.invalid">
+      Save
+    </button>    
+  </form>
+</div>
+</div>
